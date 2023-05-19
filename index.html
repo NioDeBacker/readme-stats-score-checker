@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scorecheck.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculate your score</h1>
+    <form id="frm1" action="">
+        <label for="totalRepos">Total repositories</label>
+        <input type="number" id="totalRepos" name="totalRepos">
+        <label for="totalCommits">Total commits</label>
+        <input type="number" id="totalCommits" name="totalCommits">
+        <label for="contributions">Contributions this year</label>
+        <input type="number" id="contributions" name="contributions">
+        <label for="followers">Followers</label>
+        <input type="number" name="followers" id="followers">
+        <label for="prs">Pull requests</label>
+        <input type="number" id="prs" name="prs">
+        <label for="issues">Issues</label>
+        <input type="number" id="issues" name="issues">
+        <label for="stargazers">Stars</label>
+        <input type="number" id="stargazers" name="stargazers">
+        <label for="fsubmit">Submit</label>
+        <input type="button" value="Submit" onclick="getRank()">
+    </form>
+    <div class="result">
+        <h2>Your score:</h2>
+        <p id="level"></p>
+        <p id="score"></p>
+    </div>
+    <script>
+        function getRank() {
+            let totalRepos = document.getElementById('totalRepos').value;
+            let totalCommits = document.getElementById('totalCommits').value;
+            let contributions = document.getElementById('contributions').value;
+            let followers = document.getElementById('followers').value;
+            let prs = document.getElementById('prs').value;
+            let issues = document.getElementById('issues').value;
+            let stargazers = document.getElementById('stargazers').value;
+
+            let result =calculateRank({
+                totalRepos: totalRepos,
+                totalCommits: totalCommits,
+                contributions: contributions,
+                followers: followers,
+                prs: prs,
+                issues: issues,
+                stargazers: stargazers
+            });
+
+            document.getElementById('level').innerHTML = result.level;
+            document.getElementById('score').innerHTML = result.score;
+
+        }
+    </script>
+</body>
+</html>
